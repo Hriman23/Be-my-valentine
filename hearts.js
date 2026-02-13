@@ -1,5 +1,5 @@
 (() => {
-  const heartCount = 35;
+  const heartCount = 200;
 
   for (let i = 0; i < heartCount; i++) {
     createHeart();
@@ -11,7 +11,7 @@
     heart.innerHTML = "❤️";
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+    heart.style.animationDuration = 6 + Math.random() * 4 + "s";
     heart.style.fontSize = 8 + Math.random() * 14 + "px";
 
     document.body.appendChild(heart);
@@ -22,3 +22,20 @@
     }, 7000);
   }
 })();
+
+function popHeart() {
+  const heart = document.createElement("div");
+  heart.className = "pop-heart";
+  heart.innerHTML = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = Math.random() * 100 + "vh";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 2000);
+}
+
+setInterval(popHeart, 300);

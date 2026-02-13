@@ -36,6 +36,9 @@ body {
     justify-content: center;
     gap: 20px;
     align-items: center;
+    opacity: 0;
+    animation: fadeInButtons 1s ease forwards;
+    animation-delay: 4s;
   }
   
   .yes-button {
@@ -70,7 +73,9 @@ body {
     height: auto;
     border-radius: 10px;
     margin-top: 20px;
-
+    opacity: 0;
+    animation: fadeInGif 1s ease forwards;
+    animation-delay: 6s;
   }
 
   @keyframes fadeSlideDown {
@@ -85,3 +90,51 @@ body {
     50% { transform: scale(1.08); }
     100% { transform: scale(1); }
   }
+
+  @keyframes tinyShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+  }
+
+  .shake {
+    animation: tinyShake 0.3s ease;
+  }
+
+  .floating-hearts {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInButtons {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInGif {
+  to { opacity: 1; }
+}

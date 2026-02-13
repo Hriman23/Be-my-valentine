@@ -20,6 +20,9 @@ body {
 .header_text {
     font-size: 3em;
     color: #d32f2f;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInSoft 2s ease forwards;
 }
 
 .gif_container img {
@@ -27,6 +30,10 @@ body {
     max-width: 160px;
     min-width: 110px;
     height: auto;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInGif 2s ease forwards;
+    animation-delay: 2s;
 }
 
 /* ❤️ HEARTS RAIN */
@@ -36,6 +43,7 @@ body {
     pointer-events: none;
     animation: fall linear forwards;
     z-index: 0;
+    opacity: 0.8;
 }
 
 @keyframes fall {
@@ -43,4 +51,52 @@ body {
         transform: translateY(100vh);
         opacity: 0;
     }
+}
+
+@keyframes fadeInSoft {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInGif {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.final_line {
+    font-size: 1.4em;
+    color: #b03060;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInFinal 2s ease forwards;
+    animation-delay: 4s;
+}
+
+@keyframes fadeInFinal {
+    to {
+        opacity: 1;
+    }
+}
+
+.pop-heart {
+  position: fixed;
+  font-size: 22px;
+  animation: popFade 2s ease forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
 }

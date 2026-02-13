@@ -20,7 +20,7 @@ const messages = [
     "Kya mtlb maanti hu? (2.0)",
     "kya mtlb how do you know what I'm thinking?",
     "Kya mtlb stop making me blush?",
-    "Okay, I lied. This is the last one, I promise!<br>Please say yes 🥺<br>Will You Be my Valentine my love?"
+    "Acha okay. This is the last one, I promise!<br>Please say yes 🥺<br>Will You Be my Valentine my love?"
 ];
 
 let messageIndex = 0;
@@ -29,11 +29,36 @@ function handleNoClick() {
     const noButton = document.querySelector('.no-button');
     const yesButton = document.querySelector('.yes-button');
     noButton.innerHTML = messages[messageIndex];
+    noButton.classList.remove("shake");
+    void noButton.offsetWidth; // forces reflow
+    noButton.classList.add("shake");
     messageIndex = (messageIndex + 1) % messages.length;
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
     yesButton.style.fontSize = `${currentSize * 1.2}px`;
 }
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+    setTimeout(() => {
+        window.location.href = "yes_page.html";
+    }, 1500);
 }
+
+const heartContainer = document.querySelector(".floating-hearts");
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+    heartContainer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 500);
+
