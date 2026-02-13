@@ -16,10 +16,26 @@ body {
   h1 {
     font-size: 2.5em;
     color: #d32f2f;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeSlideDown 2s ease forwards;
+  }
+
+  h2 {
+    font-size: 2em;
+    color: #ec5e5e;
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: fadeSlideDown 2s ease forwards;
+    animation-delay: 2s;
   }
   
   .buttons {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
   }
   
   .yes-button {
@@ -31,6 +47,9 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    animation-delay: 4s;
   }
   
   .no-button {
@@ -41,6 +60,8 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    min-width: 220px;
+    transition: all 0.3s ease;
   }
   
   .gif_container img {
@@ -50,4 +71,17 @@ body {
     border-radius: 10px;
     margin-top: 20px;
 
+  }
+
+  @keyframes fadeSlideDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
   }
